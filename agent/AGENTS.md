@@ -28,7 +28,7 @@ Read the relevant guide under `node_modules/next/dist/docs/` before touching Nex
 
 ## Checks
 
-Run `npm run lint`, `npm run typecheck` and `npm run build` before declaring work complete.
+Run `npm run lint`, `npm run typecheck`, `npm run build` and `npm test` before declaring work complete.
 
 ## Layout
 
