@@ -14,6 +14,32 @@
 - Use `h-dvh`, never `h-screen`, so mobile browser chrome does not clip content.
 - Respect safe areas with `env(safe-area-inset-*, 0px)`.
 
+## Class composition
+
+`tailwind-compose` builds variant-aware class names through the `compose` and
+`classnames` helpers exported from `@/lib/utils`. The config routes every
+result through `cn`, so Tailwind conflicts resolve the same way as the rest of
+the project.
+
+```tsx
+import { compose } from "@/lib/utils"
+
+const Button = compose.a<{ $active: boolean }>((conditional) => [
+  "inline-flex items-center rounded-md px-3 py-2 text-sm",
+  conditional(["bg-primary text-primary-foreground"], ({ $active }) => $active === true),
+  conditional(["bg-muted text-muted-foreground"], ({ $active }) => $active !== true),
+])
+```
+
+Two rules matter when using it:
+
+- Conditions must return a strict `boolean`. Write `active === true`, never
+  `active`, because the prop may be optional.
+- State props must be prefixed with `$` (`$active`, `$item`). `compose` consumes
+  those props to evaluate the conditions and strips them from the rendered
+  element. A plain prop such as `item` leaks into the DOM as
+  `item="[object Object]"`.
+
 ## Interaction
 
 - Interactive targets are at least 44px tall (`min-h-11`).
