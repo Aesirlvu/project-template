@@ -1,7 +1,25 @@
-import { cn } from "@/lib/utils"
+"use client"
+
+import { compose } from "@/lib/utils"
 
 import { MobileNav } from "./mobile-nav"
 import type { NavSection } from "./types"
+
+const ShellRoot = compose.div<{ className?: string }>(() => [
+  "flex h-dvh w-full flex-col overflow-hidden bg-background text-foreground",
+])
+
+const ShellHeader = compose.header(() => [
+  "flex h-14 shrink-0 items-center gap-2 border-b bg-background px-2 pt-[env(safe-area-inset-top,0px)]",
+])
+
+const ShellTitle = compose.h1(() => [
+  "min-w-0 flex-1 truncate text-sm font-semibold",
+])
+
+const ShellMain = compose.main(() => [
+  "min-h-0 flex-1 overflow-y-auto overscroll-contain pb-[env(safe-area-inset-bottom,0px)]",
+])
 
 export function MobileShell({
   sections,
@@ -19,24 +37,15 @@ export function MobileShell({
   className?: string
 }) {
   return (
-    <div
-      className={cn(
-        "flex h-dvh w-full flex-col overflow-hidden bg-background text-foreground",
-        className
-      )}
-    >
-      <header className="flex h-14 shrink-0 items-center gap-2 border-b bg-background px-2 pt-[env(safe-area-inset-top,0px)]">
+    <ShellRoot className={className}>
+      <ShellHeader>
         <MobileNav sections={sections} activeHref={activeHref} title={title} />
-        <h1 className="min-w-0 flex-1 truncate text-sm font-semibold">
-          {title}
-        </h1>
+        <ShellTitle>{title}</ShellTitle>
         {actions ? (
           <div className="flex items-center gap-2">{actions}</div>
         ) : null}
-      </header>
-      <main className="min-h-0 flex-1 overflow-y-auto overscroll-contain pb-[env(safe-area-inset-bottom,0px)]">
-        {children}
-      </main>
-    </div>
+      </ShellHeader>
+      <ShellMain>{children}</ShellMain>
+    </ShellRoot>
   )
 }
