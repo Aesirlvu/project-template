@@ -82,9 +82,11 @@ appends. None of the migrated components forward a `ref`.
 
 `composeClasses` accepts a `string` only. Base UI primitives type `className`
 as `string | ((state: State) => string | undefined)`; use
-`composeClassesWithState` there. It returns the function untouched, because the
-state is not resolved at composition time. Base UI primitives do not append
-the `className` themselves, so passing a merged string to them is safe.
+`composeClassesWithState` there. It collapses a render prop to a plain string,
+exactly like the upstream components do, because `cn` drops the function
+silently. Returning the function untouched instead would discard every composed
+base and variant class. Base UI primitives do not append the `className`
+themselves, so passing a merged string to them is safe.
 
 ## Migrating a cva definition
 
