@@ -32,16 +32,14 @@ export function composeClasses(composed: string, className?: string): string {
  * Same as `composeClasses`, but for Base UI primitives that type `className`
  * as `string | ((state) => string | undefined)`.
  *
- * A render prop cannot be merged here because it needs the resolved element
- * state, so it is returned untouched and the primitive keeps rendering it.
+ * A render prop cannot be merged because it needs the resolved element state.
+ * The upstream components collapse it the same way: `cn` silently drops the
+ * function and keeps the composed classes, so the result stays a string and
+ * the component never loses its base and variant classes.
  */
 export function composeClassesWithState<State>(
   composed: string,
   className?: string | ((state: State) => string | undefined)
-): string | ((state: State) => string | undefined) {
-  if (typeof className === "function") {
-    return className
-  }
-
-  return cn(composed, className)
+): string {
+  return cn(composed, typeof className === "function" ? undefined : className)
 }
