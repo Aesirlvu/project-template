@@ -123,10 +123,9 @@ function ItemMedia({
   ...props
 }: React.ComponentProps<"div"> & { variant?: ItemMediaVariant }) {
   return (
-    <ItemMediaBase
+    <div
       data-slot="item-media"
       data-variant={variant}
-      $variant={variant}
       className={composeClasses(
         ItemMediaBase.toClass({ $variant: variant }),
         className
