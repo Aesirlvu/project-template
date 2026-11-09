@@ -53,9 +53,11 @@ would resolve Tailwind conflicts that the official components leave in place.
 
 ### Merging the consumer className
 
-`compose` appends the consumer's `className` after the variant classes without
-resolving conflicts. To match the official behaviour, compute the composed
-classes first and merge the consumer's `className` once:
+`compose` appends the consumer's `className` to the composed classes without
+resolving conflicts, and the composed component appends whatever `className` it
+receives to those classes as well. Passing an already merged string to a
+composed component duplicates every class, so compute the classes, merge once,
+and render a native element:
 
 ```tsx
 import { compose, composeClasses } from "@/lib/compose-raw"
@@ -67,18 +69,26 @@ const AlertBase = compose.div<{ $variant: AlertVariant }>((conditional) => [
 
 function Alert({ className, variant = "default", ...props }) {
   return (
-    <AlertBase
-      $variant={variant}
-      className={composeClasses(AlertBase.toClass({ $variant: variant }), className)}
+    <div
+      data-slot="alert"
+      className={composeClasses(
+        AlertBase.toClass({ $variant: variant }),
+        className
+      )}
       {...props}
     />
   )
 }
 ```
 
+The result matches `cn(variants(...), className)`: the consumer's class wins
+every conflict.
+
 `composeClasses` is for native elements. Base UI primitives type `className` as
 `string | ((state) => string | undefined)`, so use `composeClassesWithState`
 there; it returns the function untouched because the state is not resolved yet.
+Base UI primitives do not append the `className` themselves, so a merged string
+is safe to pass to them.
 
 `classnames(...)` from the library drops the consumer's `className`. Use
 `toClass(props)` instead.
