@@ -2,7 +2,7 @@ import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { cn } from "@/lib/utils"
+import { compose } from "@/lib/utils"
 
 const geistHeading = Geist({ subsets: ["latin"], variable: "--font-heading" })
 
@@ -16,23 +16,22 @@ const fontMono = Geist_Mono({
   variable: "--font-mono",
 })
 
+const rootClassName = compose
+  .html(() => [
+    "antialiased font-sans",
+    fontMono.variable,
+    spaceGrotesk.variable,
+    geistHeading.variable,
+  ])
+  .toString()
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={cn(
-        "antialiased",
-        fontMono.variable,
-        "font-sans",
-        spaceGrotesk.variable,
-        geistHeading.variable
-      )}
-    >
+    <html lang="en" suppressHydrationWarning className={rootClassName}>
       <body>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
