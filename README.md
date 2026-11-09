@@ -12,8 +12,8 @@ Registry](https://ui.shadcn.com/docs/registry). It serves two purposes:
 - Next.js 16 with App Router and Turbopack
 - React 19
 - Tailwind CSS 4 with CSS variables
-- shadcn/ui (Base UI style, Tabler icons, Zinc base color)
-- `tailwind-compose` for variant-aware class composition, merged through `cn`
+- shadcn/ui (Base UI style, Tabler icons, Zinc base color) — 63 components
+- `tailwind-compose` for variant-aware class composition
 - TypeScript 5, ESLint 9, Prettier 3
 
 ## Registry items
@@ -21,6 +21,7 @@ Registry](https://ui.shadcn.com/docs/registry). It serves two purposes:
 | Item | Type | What it installs |
 | --- | --- | --- |
 | `base-setup` | `registry:base` | Design system base: CSS variables, theme provider, Button component, utilities, and the base dependencies |
+| `ui-kit` | `registry:block` | The full shadcn/ui component set (63 components) plus its hooks and utilities, with internal variants migrated to `tailwind-compose` (requires `base-setup`) |
 | `ai-stack` | `registry:lib` | Optional AI SDK 7 integration through the Vercel AI Gateway: shared provider, streaming helper, and environment variables |
 | `add-deps` | `registry:file` | `scripts/add-deps.mjs`, a script to add your own dependencies on top of the base setup |
 | `docs-pack` | `registry:file` | `docs/architecture.md`, `docs/conventions.md`, `docs/ARCHITECTURE.md`, and `AGENTS.md` |
@@ -40,6 +41,9 @@ The project needs a `tsconfig.json` and a `components.json` with aliases for
 # base design system + dependencies
 npx shadcn@latest add Aesirlvu/project-template/base-setup
 
+# the full component set (63 components)
+npx shadcn@latest add Aesirlvu/project-template/ui-kit
+
 # desktop and/or mobile application chrome
 npx shadcn@latest add Aesirlvu/project-template/app-shell
 npx shadcn@latest add Aesirlvu/project-template/mobile-shell
@@ -58,6 +62,11 @@ Item dependencies are merged into your `package.json`, so your existing
 scripts, versions, and dependencies are preserved. Existing files are skipped
 rather than overwritten; add `--overwrite` to replace them.
 
+> If you already run `npx shadcn@latest add --all`, skip the `ui-kit` item.
+> That command installs the official shadcn registry and, with `--overwrite`,
+> silently reverts the primitives in this registry back to
+> `class-variance-authority`.
+
 Set `AI_GATEWAY_API_KEY` in your environment to call hosted models. See the
 [AI Gateway documentation](https://vercel.com/docs/ai-gateway) for keys and
 model IDs.
@@ -73,9 +82,12 @@ node scripts/add-deps.mjs --list
 
 ### Composing class variants
 
-`@/lib/utils` exports `compose` and `classnames` from `tailwind-compose`. The
-config routes every result through `cn`, so Tailwind conflicts resolve the
-same way as the rest of the project.
+`tailwind-compose` powers the variant definitions. Two entry points exist:
+
+| Module | Merge | Used by |
+| --- | --- | --- |
+| `@/lib/utils` | Every result goes through `cn` | Application code |
+| `@/lib/compose-raw` | No merge | The shadcn primitives, so their classes stay identical to the official implementation |
 
 ```tsx
 import { compose } from "@/lib/utils"
@@ -94,6 +106,16 @@ Two rules matter:
 - State props are prefixed with `$` (`$active`, `$item`). `compose` consumes
   them to evaluate the conditions and strips them from the rendered element. A
   plain prop such as `item` leaks into the DOM as `item="[object Object]"`.
+
+In the primitives, merge the consumer's `className` once, after computing the
+composed classes:
+
+```tsx
+className={composeClasses(AlertBase.toClass({ $variant: variant }), className)}
+```
+
+Primitives that expose a public `xxxVariants` helper keep
+`class-variance-authority`, because consumers depend on that export.
 
 ### Listing the registry
 
