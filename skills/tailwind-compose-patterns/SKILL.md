@@ -48,17 +48,43 @@ const NavLinkBase = compose.a<{ $item: NavItem; $active: boolean }>(
 
 ## Merging the consumer className
 
-`compose` appends the consumer's `className` after the variant classes without
-resolving conflicts. Compute the composed classes first and merge once:
+`compose` appends the consumer's `className` to the composed classes **without**
+resolving conflicts, and the composed component appends whatever `className` it
+receives to the composed classes as well. Passing an already merged string to a
+composed component therefore duplicates every class.
+
+Compute the classes and merge the consumer's `className` once, then render a
+**native element**:
 
 ```tsx
-className={composeClasses(AlertBase.toClass({ $variant: variant }), className)}
+const AlertBase = compose.div<{ $variant: AlertVariant }>((conditional) => [
+  "relative w-full rounded-lg border p-4",
+  conditional(["bg-card text-card-foreground"], ({ $variant }) => $variant === "default"),
+])
+
+function Alert({ className, variant = "default", ...props }) {
+  return (
+    <div
+      data-slot="alert"
+      className={composeClasses(
+        AlertBase.toClass({ $variant: variant }),
+        className
+      )}
+      {...props}
+    />
+  )
+}
 ```
+
+Rendering a native element is equivalent here: the composed component only
+adds the target tag, the `$`-prefixed props it strips, and the `className` it
+appends. None of the migrated components forward a `ref`.
 
 `composeClasses` accepts a `string` only. Base UI primitives type `className`
 as `string | ((state: State) => string | undefined)`; use
 `composeClassesWithState` there. It returns the function untouched, because the
-state is not resolved at composition time.
+state is not resolved at composition time. Base UI primitives do not append
+the `className` themselves, so passing a merged string to them is safe.
 
 ## Migrating a cva definition
 
