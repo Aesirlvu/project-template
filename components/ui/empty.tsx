@@ -49,10 +49,9 @@ function EmptyMedia({
   ...props
 }: React.ComponentProps<"div"> & { variant?: EmptyMediaVariant }) {
   return (
-    <EmptyMediaBase
+    <div
       data-slot="empty-icon"
       data-variant={variant}
-      $variant={variant}
       className={composeClasses(
         EmptyMediaBase.toClass({ $variant: variant }),
         className
