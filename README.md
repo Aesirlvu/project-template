@@ -180,4 +180,5 @@ npm run lint       # ESLint
 npm run typecheck  # tsc --noEmit
 npm run build      # production build
 npm run format     # Prettier
+npm test           # carousel state + class parity against upstream shadcn
 ```
