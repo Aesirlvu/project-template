@@ -40,3 +40,6 @@ next-env.d.ts
 
 # local agent skill registry
 /.atl/
+
+# cached upstream registry originals used by the class parity test
+/.registry-cache/
