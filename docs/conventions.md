@@ -40,6 +40,67 @@ Two rules matter when using it:
   element. A plain prop such as `item` leaks into the DOM as
   `item="[object Object]"`.
 
+### Two entry points
+
+| Module | Merge | Used by |
+| --- | --- | --- |
+| `@/lib/utils` | `onDone` hook routes every result through `cn` | Application code under `components/shell/` |
+| `@/lib/compose-raw` | No hook | The shadcn primitives in `components/ui/` |
+
+The primitives use the raw entry point so their rendered classes stay
+byte-identical to the official shadcn implementation. The hook in `@/lib/utils`
+would resolve Tailwind conflicts that the official components leave in place.
+
+### Merging the consumer className
+
+`compose` appends the consumer's `className` after the variant classes without
+resolving conflicts. To match the official behaviour, compute the composed
+classes first and merge the consumer's `className` once:
+
+```tsx
+import { compose, composeClasses } from "@/lib/compose-raw"
+
+const AlertBase = compose.div<{ $variant: AlertVariant }>((conditional) => [
+  "relative w-full rounded-lg border p-4",
+  conditional(["bg-card text-card-foreground"], ({ $variant }) => $variant === "default"),
+])
+
+function Alert({ className, variant = "default", ...props }) {
+  return (
+    <AlertBase
+      $variant={variant}
+      className={composeClasses(AlertBase.toClass({ $variant: variant }), className)}
+      {...props}
+    />
+  )
+}
+```
+
+`composeClasses` is for native elements. Base UI primitives type `className` as
+`string | ((state) => string | undefined)`, so use `composeClassesWithState`
+there; it returns the function untouched because the state is not resolved yet.
+
+`classnames(...)` from the library drops the consumer's `className`. Use
+`toClass(props)` instead.
+
+## Shadcn primitives
+
+Components whose public API exports a `xxxVariants` helper keep
+`class-variance-authority`, because consumers depend on that export:
+`button`, `badge`, `marker`, `tabs`, `toggle`, `toggle-group`, `button-group`,
+and `calendar`. Everything else uses `tailwind-compose` internally.
+
+`npx shadcn@latest add --all` reinstalls the official primitives over this
+registry and silently reverts them to `class-variance-authority`. Use
+`--overwrite` knowingly or run `--all` before installing this registry.
+
+`hooks/use-mobile.ts` and `components/ui/carousel.tsx` were rewritten from the
+official versions to satisfy the `react-hooks/set-state-in-effect` rule of
+React 19 and ESLint 9. `use-mobile.ts` uses `useSyncExternalStore`; `carousel.tsx`
+derives the scroll state from the Embla API during render and uses a
+`requestAnimationFrame` for the initial state, because Embla only emits
+`select` when the active index changes.
+
 ## Interaction
 
 - Interactive targets are at least 44px tall (`min-h-11`).
