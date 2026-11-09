@@ -146,11 +146,6 @@
           "target": "@ui/button-group.tsx"
         },
         {
-          "path": "components/ui/button.tsx",
-          "type": "registry:ui",
-          "target": "@ui/button.tsx"
-        },
-        {
           "path": "components/ui/calendar.tsx",
           "type": "registry:ui",
           "target": "@ui/calendar.tsx"
@@ -421,24 +416,9 @@
           "target": "@hooks/use-mobile.ts"
         },
         {
-          "path": "lib/compose-raw.ts",
-          "type": "registry:lib",
-          "target": "@lib/compose-raw.ts"
-        },
-        {
           "path": "lib/highlighter.tsx",
           "type": "registry:lib",
           "target": "@lib/highlighter.tsx"
-        },
-        {
-          "path": "lib/tailwind-compose.ts",
-          "type": "registry:lib",
-          "target": "@lib/tailwind-compose.ts"
-        },
-        {
-          "path": "lib/utils.ts",
-          "type": "registry:lib",
-          "target": "@lib/utils.ts"
         }
       ],
       "docs": "Installs the complete shadcn/ui component set. Components whose public API exposes a `xxxVariants` helper keep `class-variance-authority`; the rest use tailwind-compose internally with identical class output. Consumers that already run `npx shadcn@latest add --all` can skip this item."
