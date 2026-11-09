@@ -56,21 +56,20 @@ function InputGroupAddon({
   ...props
 }: React.ComponentProps<"div"> & { align?: InputGroupAlign }) {
   return (
-    <InputGroupAddonBase
+    <div
       role="group"
       data-slot="input-group-addon"
       data-align={align}
-      $align={align}
-      className={composeClasses(
-        InputGroupAddonBase.toClass({ $align: align }),
-        className
-      )}
       onClick={(e: React.MouseEvent<HTMLDivElement>) => {
         if ((e.target as HTMLElement).closest("button")) {
           return
         }
         e.currentTarget.parentElement?.querySelector("input")?.focus()
       }}
+      className={composeClasses(
+        InputGroupAddonBase.toClass({ $align: align }),
+        className
+      )}
       {...props}
     />
   )
