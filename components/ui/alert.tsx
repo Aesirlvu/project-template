@@ -34,10 +34,9 @@ function Alert({
   ...props
 }: React.ComponentProps<"div"> & { variant?: AlertVariant }) {
   return (
-    <AlertBase
+    <div
       data-slot="alert"
       role="alert"
-      $variant={variant}
       className={composeClasses(
         AlertBase.toClass({ $variant: variant }),
         className
