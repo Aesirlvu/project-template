@@ -7,7 +7,7 @@ This repository is both a runnable Next.js application and a [shadcn](https://ui
 1. **`app/`** — Next.js App Router entry points. Route groups (`(app)`) organize layouts without affecting the URL.
 2. **`components/ui/`** — Primitive components generated or maintained for the shadcn registry. These are the lowest-level building blocks.
 3. **`components/shell/`** — Composable application chrome (sidebar, topbar, mobile navigation, tab bar). These consume `components/ui/` and are exported as registry items.
-4. **`lib/`** — Framework-agnostic utilities. `lib/utils.ts` re-exports `cn`; `lib/ai/` holds the optional AI Gateway integration.
+4. **`lib/`** — Framework-agnostic utilities. `lib/utils.ts` re-exports `cn` plus the `compose` and `classnames` helpers; `lib/tailwind-compose.ts` configures `tailwind-compose` so its output is merged by `cn`; `lib/ai/` holds the optional AI Gateway integration.
 5. **`skills/`** — Agent-facing instruction packs distributed through the registry as `registry:item` entries.
 6. **`docs/`** — Architecture and convention notes distributed through the registry as `registry:file` entries.
 7. **`scripts/`** — Operational scripts. `scripts/add-deps.mjs` installs additional dependencies on demand without replacing `package.json`.
