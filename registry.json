@@ -105,6 +105,153 @@
         }
       ],
       "docs": "Run `node scripts/add-deps.mjs <package>[@version]` to add runtime dependencies, `node scripts/add-deps.mjs --dev <package>` for development dependencies, and `node scripts/add-deps.mjs --list` to inspect what is installed."
+    },
+    {
+      "name": "docs-pack",
+      "type": "registry:file",
+      "title": "Docs pack",
+      "description": "Architecture and conventions documentation plus agent instructions, ready to drop into a new project.",
+      "author": "Aesirlvu <https://github.com/Aesirlvu>",
+      "files": [
+        {
+          "path": "docs/architecture.md",
+          "type": "registry:file",
+          "target": "~/docs/architecture.md"
+        },
+        {
+          "path": "docs/conventions.md",
+          "type": "registry:file",
+          "target": "~/docs/conventions.md"
+        },
+        {
+          "path": "agent/AGENTS.md",
+          "type": "registry:file",
+          "target": "~/AGENTS.md"
+        },
+        {
+          "path": "agent/ARCHITECTURE.md",
+          "type": "registry:file",
+          "target": "~/docs/ARCHITECTURE.md"
+        }
+      ],
+      "docs": "Installs `docs/architecture.md`, `docs/conventions.md`, `docs/ARCHITECTURE.md` and `AGENTS.md` in the consumer project."
+    },
+    {
+      "name": "app-shell",
+      "type": "registry:block",
+      "title": "App shell",
+      "description": "Desktop application shell with sidebar navigation, topbar, and reusable nav primitives.",
+      "author": "Aesirlvu <https://github.com/Aesirlvu>",
+      "registryDependencies": ["Aesirlvu/project-template/base-setup"],
+      "files": [
+        {
+          "path": "components/shell/types.ts",
+          "type": "registry:lib",
+          "target": "@components/shell/types.ts"
+        },
+        {
+          "path": "components/shell/nav-link.tsx",
+          "type": "registry:component",
+          "target": "@components/shell/nav-link.tsx"
+        },
+        {
+          "path": "components/shell/sidebar-nav.tsx",
+          "type": "registry:component",
+          "target": "@components/shell/sidebar-nav.tsx"
+        },
+        {
+          "path": "components/shell/app-sidebar.tsx",
+          "type": "registry:component",
+          "target": "@components/shell/app-sidebar.tsx"
+        },
+        {
+          "path": "components/shell/app-topbar.tsx",
+          "type": "registry:component",
+          "target": "@components/shell/app-topbar.tsx"
+        },
+        {
+          "path": "components/shell/app-shell.tsx",
+          "type": "registry:component",
+          "target": "@components/shell/app-shell.tsx"
+        }
+      ],
+      "docs": "Requires `base-setup`. Import `AppShell` from `@/components/shell/app-shell` and pass a `NavSection[]` describing your navigation."
+    },
+    {
+      "name": "mobile-shell",
+      "type": "registry:block",
+      "title": "Mobile shell",
+      "description": "Mobile-first application shell with a drawer menu and bottom tab bar, including safe-area handling.",
+      "author": "Aesirlvu <https://github.com/Aesirlvu>",
+      "registryDependencies": ["Aesirlvu/project-template/base-setup"],
+      "files": [
+        {
+          "path": "components/shell/types.ts",
+          "type": "registry:lib",
+          "target": "@components/shell/types.ts"
+        },
+        {
+          "path": "components/shell/nav-link.tsx",
+          "type": "registry:component",
+          "target": "@components/shell/nav-link.tsx"
+        },
+        {
+          "path": "components/shell/sidebar-nav.tsx",
+          "type": "registry:component",
+          "target": "@components/shell/sidebar-nav.tsx"
+        },
+        {
+          "path": "components/shell/mobile-nav.tsx",
+          "type": "registry:component",
+          "target": "@components/shell/mobile-nav.tsx"
+        },
+        {
+          "path": "components/shell/mobile-tab-bar.tsx",
+          "type": "registry:component",
+          "target": "@components/shell/mobile-tab-bar.tsx"
+        },
+        {
+          "path": "components/shell/mobile-shell.tsx",
+          "type": "registry:component",
+          "target": "@components/shell/mobile-shell.tsx"
+        }
+      ],
+      "docs": "Requires `base-setup`. Import `MobileShell` from `@/components/shell/mobile-shell` and `MobileTabBar` from `@/components/shell/mobile-tab-bar`."
+    },
+    {
+      "name": "dashboard-layout",
+      "type": "registry:page",
+      "title": "Dashboard layout",
+      "description": "Route-group layout with the viewport configuration required for edge-to-edge mobile rendering.",
+      "author": "Aesirlvu <https://github.com/Aesirlvu>",
+      "files": [
+        {
+          "path": "app/(app)/layout.tsx",
+          "type": "registry:page",
+          "target": "~/app/(app)/layout.tsx"
+        }
+      ],
+      "docs": "Creates `app/(app)/layout.tsx` in the consumer. Add your own pages under `app/(app)/`."
+    },
+    {
+      "name": "agent-skills",
+      "type": "registry:item",
+      "title": "Agent skills",
+      "description": "Agent-facing skill packs covering shadcn registry authoring and Next.js application shell construction.",
+      "author": "Aesirlvu <https://github.com/Aesirlvu>",
+      "files": [
+        {
+          "path": "skills/shadcn-registry-authoring/SKILL.md",
+          "type": "registry:file",
+          "target": "~/skills/shadcn-registry-authoring/SKILL.md"
+        },
+        {
+          "path": "skills/nextjs-app-shell/SKILL.md",
+          "type": "registry:file",
+          "target": "~/skills/nextjs-app-shell/SKILL.md"
+        }
+      ],
+      "docs": "Installs skill packs under `skills/`. Point your agent at the installed `SKILL.md` files to pick up the conventions used by this template."
     }
   ]
 }
