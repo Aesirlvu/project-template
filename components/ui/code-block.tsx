@@ -37,11 +37,10 @@ function CodeBlock({
   size?: "default" | "sm"
 }) {
   return (
-    <CodeBlockBase
+    <div
       data-slot="code-block"
       data-variant={variant}
       data-size={size}
-      $variant={variant}
       className={composeClasses(
         CodeBlockBase.toClass({ $variant: variant }),
         className
@@ -215,10 +214,9 @@ function CodeBlockLine({
     (Array.isArray(children) && children.length === 0)
 
   return (
-    <CodeBlockLineBase
+    <span
       data-slot="code-block-line"
       data-variant={variant}
-      $variant={variant}
       className={composeClasses(
         CodeBlockLineBase.toClass({ $variant: variant }),
         className
@@ -228,7 +226,7 @@ function CodeBlockLine({
       <span data-slot="code-block-line-content" className="min-w-0">
         {empty ? "\n" : children}
       </span>
-    </CodeBlockLineBase>
+    </span>
   )
 }
 
