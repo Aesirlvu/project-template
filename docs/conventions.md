@@ -86,9 +86,10 @@ every conflict.
 
 `composeClasses` is for native elements. Base UI primitives type `className` as
 `string | ((state) => string | undefined)`, so use `composeClassesWithState`
-there; it returns the function untouched because the state is not resolved yet.
-Base UI primitives do not append the `className` themselves, so a merged string
-is safe to pass to them.
+there. It collapses a render prop to a plain string, exactly like the upstream
+components do: `cn` drops the function silently, so the composed classes stay
+and the result is always a string. Base UI primitives do not append the
+`className` themselves, so a merged string is safe to pass to them.
 
 `classnames(...)` from the library drops the consumer's `className`. Use
 `toClass(props)` instead.
