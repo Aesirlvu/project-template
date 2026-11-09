@@ -54,13 +54,11 @@ function Attachment({
   orientation?: AttachmentOrientation
 }) {
   return (
-    <AttachmentBase
+    <div
       data-slot="attachment"
       data-state={state}
       data-size={size}
       data-orientation={orientation}
-      $size={size}
-      $orientation={orientation}
       className={composeClasses(
         AttachmentBase.toClass({ $size: size, $orientation: orientation }),
         className
@@ -90,10 +88,9 @@ function AttachmentMedia({
   ...props
 }: React.ComponentProps<"div"> & { variant?: AttachmentMediaVariant }) {
   return (
-    <AttachmentMediaBase
+    <div
       data-slot="attachment-media"
       data-variant={variant}
-      $variant={variant}
       className={composeClasses(
         AttachmentMediaBase.toClass({ $variant: variant }),
         className
