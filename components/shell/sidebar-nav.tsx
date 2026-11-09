@@ -1,7 +1,11 @@
-import { cn } from "@/lib/utils"
+import { compose } from "@/lib/utils"
 
 import { NavLink } from "./nav-link"
 import type { NavSection } from "./types"
+
+const SidebarNavRoot = compose.nav<{ className?: string }>(() => [
+  "flex flex-col gap-6",
+])
 
 export function SidebarNav({
   sections,
@@ -15,7 +19,7 @@ export function SidebarNav({
   className?: string
 }) {
   return (
-    <nav aria-label="Main" className={cn("flex flex-col gap-6", className)}>
+    <SidebarNavRoot aria-label="Main" className={className}>
       {sections.map((section, sectionIndex) => (
         <div
           key={section.title ?? sectionIndex}
@@ -36,6 +40,6 @@ export function SidebarNav({
           ))}
         </div>
       ))}
-    </nav>
+    </SidebarNavRoot>
   )
 }
