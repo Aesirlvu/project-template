@@ -81,11 +81,10 @@ function Bubble({
   variant?: BubbleVariant
 }) {
   return (
-    <BubbleBase
+    <div
       data-slot="bubble"
       data-variant={variant}
       data-align={align}
-      $variant={variant}
       className={composeClasses(
         BubbleBase.toClass({ $variant: variant }),
         className
@@ -143,12 +142,10 @@ function BubbleReactions({
   side?: BubbleReactionsSide
 }) {
   return (
-    <BubbleReactionsBase
+    <div
       data-slot="bubble-reactions"
       data-align={align}
       data-side={side}
-      $side={side}
-      $align={align}
       className={composeClasses(
         BubbleReactionsBase.toClass({ $side: side, $align: align }),
         className
