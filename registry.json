@@ -55,6 +55,11 @@
           "target": "@lib/tailwind-compose.ts"
         },
         {
+          "path": "lib/compose-raw.ts",
+          "type": "registry:lib",
+          "target": "@lib/compose-raw.ts"
+        },
+        {
           "path": "postcss.config.mjs",
           "type": "registry:file",
           "target": "~/postcss.config.mjs"
@@ -69,13 +74,388 @@
       }
     },
     {
+      "name": "ui-kit",
+      "type": "registry:block",
+      "title": "UI kit",
+      "description": "The full shadcn/ui component set (63 components) plus the hooks and utilities they need, with internal variant definitions migrated to tailwind-compose.",
+      "author": "Aesirlvu <https://github.com/Aesirlvu>",
+      "dependencies": [
+        "@shadcn/react@^0.3.1",
+        "class-variance-authority@^0.7.1",
+        "cmdk@^1.1.1",
+        "date-fns@^4.4.0",
+        "embla-carousel-react@^8.6.0",
+        "input-otp@^1.5.0",
+        "react-day-picker@^10.0.2",
+        "react-resizable-panels@^4.21.0",
+        "recharts@^3.8.0",
+        "shiki@^4.6.0"
+      ],
+      "registryDependencies": [
+        "Aesirlvu/project-template/base-setup"
+      ],
+      "files": [
+        {
+          "path": "components/ui/accordion.tsx",
+          "type": "registry:ui",
+          "target": "@ui/accordion.tsx"
+        },
+        {
+          "path": "components/ui/alert-dialog.tsx",
+          "type": "registry:ui",
+          "target": "@ui/alert-dialog.tsx"
+        },
+        {
+          "path": "components/ui/alert.tsx",
+          "type": "registry:ui",
+          "target": "@ui/alert.tsx"
+        },
+        {
+          "path": "components/ui/aspect-ratio.tsx",
+          "type": "registry:ui",
+          "target": "@ui/aspect-ratio.tsx"
+        },
+        {
+          "path": "components/ui/attachment.tsx",
+          "type": "registry:ui",
+          "target": "@ui/attachment.tsx"
+        },
+        {
+          "path": "components/ui/avatar.tsx",
+          "type": "registry:ui",
+          "target": "@ui/avatar.tsx"
+        },
+        {
+          "path": "components/ui/badge.tsx",
+          "type": "registry:ui",
+          "target": "@ui/badge.tsx"
+        },
+        {
+          "path": "components/ui/breadcrumb.tsx",
+          "type": "registry:ui",
+          "target": "@ui/breadcrumb.tsx"
+        },
+        {
+          "path": "components/ui/bubble.tsx",
+          "type": "registry:ui",
+          "target": "@ui/bubble.tsx"
+        },
+        {
+          "path": "components/ui/button-group.tsx",
+          "type": "registry:ui",
+          "target": "@ui/button-group.tsx"
+        },
+        {
+          "path": "components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "@ui/button.tsx"
+        },
+        {
+          "path": "components/ui/calendar.tsx",
+          "type": "registry:ui",
+          "target": "@ui/calendar.tsx"
+        },
+        {
+          "path": "components/ui/card.tsx",
+          "type": "registry:ui",
+          "target": "@ui/card.tsx"
+        },
+        {
+          "path": "components/ui/carousel.tsx",
+          "type": "registry:ui",
+          "target": "@ui/carousel.tsx"
+        },
+        {
+          "path": "components/ui/chart.tsx",
+          "type": "registry:ui",
+          "target": "@ui/chart.tsx"
+        },
+        {
+          "path": "components/ui/checkbox.tsx",
+          "type": "registry:ui",
+          "target": "@ui/checkbox.tsx"
+        },
+        {
+          "path": "components/ui/code-block.tsx",
+          "type": "registry:ui",
+          "target": "@ui/code-block.tsx"
+        },
+        {
+          "path": "components/ui/collapsible.tsx",
+          "type": "registry:ui",
+          "target": "@ui/collapsible.tsx"
+        },
+        {
+          "path": "components/ui/combobox.tsx",
+          "type": "registry:ui",
+          "target": "@ui/combobox.tsx"
+        },
+        {
+          "path": "components/ui/command.tsx",
+          "type": "registry:ui",
+          "target": "@ui/command.tsx"
+        },
+        {
+          "path": "components/ui/context-menu.tsx",
+          "type": "registry:ui",
+          "target": "@ui/context-menu.tsx"
+        },
+        {
+          "path": "components/ui/dialog.tsx",
+          "type": "registry:ui",
+          "target": "@ui/dialog.tsx"
+        },
+        {
+          "path": "components/ui/direction.tsx",
+          "type": "registry:ui",
+          "target": "@ui/direction.tsx"
+        },
+        {
+          "path": "components/ui/drawer.tsx",
+          "type": "registry:ui",
+          "target": "@ui/drawer.tsx"
+        },
+        {
+          "path": "components/ui/dropdown-menu.tsx",
+          "type": "registry:ui",
+          "target": "@ui/dropdown-menu.tsx"
+        },
+        {
+          "path": "components/ui/empty.tsx",
+          "type": "registry:ui",
+          "target": "@ui/empty.tsx"
+        },
+        {
+          "path": "components/ui/field.tsx",
+          "type": "registry:ui",
+          "target": "@ui/field.tsx"
+        },
+        {
+          "path": "components/ui/hover-card.tsx",
+          "type": "registry:ui",
+          "target": "@ui/hover-card.tsx"
+        },
+        {
+          "path": "components/ui/input-group.tsx",
+          "type": "registry:ui",
+          "target": "@ui/input-group.tsx"
+        },
+        {
+          "path": "components/ui/input-otp.tsx",
+          "type": "registry:ui",
+          "target": "@ui/input-otp.tsx"
+        },
+        {
+          "path": "components/ui/input.tsx",
+          "type": "registry:ui",
+          "target": "@ui/input.tsx"
+        },
+        {
+          "path": "components/ui/item.tsx",
+          "type": "registry:ui",
+          "target": "@ui/item.tsx"
+        },
+        {
+          "path": "components/ui/kbd.tsx",
+          "type": "registry:ui",
+          "target": "@ui/kbd.tsx"
+        },
+        {
+          "path": "components/ui/label.tsx",
+          "type": "registry:ui",
+          "target": "@ui/label.tsx"
+        },
+        {
+          "path": "components/ui/marker.tsx",
+          "type": "registry:ui",
+          "target": "@ui/marker.tsx"
+        },
+        {
+          "path": "components/ui/menubar.tsx",
+          "type": "registry:ui",
+          "target": "@ui/menubar.tsx"
+        },
+        {
+          "path": "components/ui/message-scroller.tsx",
+          "type": "registry:ui",
+          "target": "@ui/message-scroller.tsx"
+        },
+        {
+          "path": "components/ui/message.tsx",
+          "type": "registry:ui",
+          "target": "@ui/message.tsx"
+        },
+        {
+          "path": "components/ui/native-select.tsx",
+          "type": "registry:ui",
+          "target": "@ui/native-select.tsx"
+        },
+        {
+          "path": "components/ui/navigation-menu.tsx",
+          "type": "registry:ui",
+          "target": "@ui/navigation-menu.tsx"
+        },
+        {
+          "path": "components/ui/pagination.tsx",
+          "type": "registry:ui",
+          "target": "@ui/pagination.tsx"
+        },
+        {
+          "path": "components/ui/popover.tsx",
+          "type": "registry:ui",
+          "target": "@ui/popover.tsx"
+        },
+        {
+          "path": "components/ui/progress.tsx",
+          "type": "registry:ui",
+          "target": "@ui/progress.tsx"
+        },
+        {
+          "path": "components/ui/questionnaire.tsx",
+          "type": "registry:ui",
+          "target": "@ui/questionnaire.tsx"
+        },
+        {
+          "path": "components/ui/radio-group.tsx",
+          "type": "registry:ui",
+          "target": "@ui/radio-group.tsx"
+        },
+        {
+          "path": "components/ui/resizable.tsx",
+          "type": "registry:ui",
+          "target": "@ui/resizable.tsx"
+        },
+        {
+          "path": "components/ui/scroll-area.tsx",
+          "type": "registry:ui",
+          "target": "@ui/scroll-area.tsx"
+        },
+        {
+          "path": "components/ui/select.tsx",
+          "type": "registry:ui",
+          "target": "@ui/select.tsx"
+        },
+        {
+          "path": "components/ui/separator.tsx",
+          "type": "registry:ui",
+          "target": "@ui/separator.tsx"
+        },
+        {
+          "path": "components/ui/sheet.tsx",
+          "type": "registry:ui",
+          "target": "@ui/sheet.tsx"
+        },
+        {
+          "path": "components/ui/sidebar.tsx",
+          "type": "registry:ui",
+          "target": "@ui/sidebar.tsx"
+        },
+        {
+          "path": "components/ui/skeleton.tsx",
+          "type": "registry:ui",
+          "target": "@ui/skeleton.tsx"
+        },
+        {
+          "path": "components/ui/slider.tsx",
+          "type": "registry:ui",
+          "target": "@ui/slider.tsx"
+        },
+        {
+          "path": "components/ui/spinner.tsx",
+          "type": "registry:ui",
+          "target": "@ui/spinner.tsx"
+        },
+        {
+          "path": "components/ui/switch.tsx",
+          "type": "registry:ui",
+          "target": "@ui/switch.tsx"
+        },
+        {
+          "path": "components/ui/table.tsx",
+          "type": "registry:ui",
+          "target": "@ui/table.tsx"
+        },
+        {
+          "path": "components/ui/tabs.tsx",
+          "type": "registry:ui",
+          "target": "@ui/tabs.tsx"
+        },
+        {
+          "path": "components/ui/textarea.tsx",
+          "type": "registry:ui",
+          "target": "@ui/textarea.tsx"
+        },
+        {
+          "path": "components/ui/toast.tsx",
+          "type": "registry:ui",
+          "target": "@ui/toast.tsx"
+        },
+        {
+          "path": "components/ui/toggle-group.tsx",
+          "type": "registry:ui",
+          "target": "@ui/toggle-group.tsx"
+        },
+        {
+          "path": "components/ui/toggle.tsx",
+          "type": "registry:ui",
+          "target": "@ui/toggle.tsx"
+        },
+        {
+          "path": "components/ui/tooltip.tsx",
+          "type": "registry:ui",
+          "target": "@ui/tooltip.tsx"
+        },
+        {
+          "path": "components/ui/trace.tsx",
+          "type": "registry:ui",
+          "target": "@ui/trace.tsx"
+        },
+        {
+          "path": "hooks/use-highlighted-code.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-highlighted-code.ts"
+        },
+        {
+          "path": "hooks/use-mobile.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-mobile.ts"
+        },
+        {
+          "path": "lib/compose-raw.ts",
+          "type": "registry:lib",
+          "target": "@lib/compose-raw.ts"
+        },
+        {
+          "path": "lib/highlighter.tsx",
+          "type": "registry:lib",
+          "target": "@lib/highlighter.tsx"
+        },
+        {
+          "path": "lib/tailwind-compose.ts",
+          "type": "registry:lib",
+          "target": "@lib/tailwind-compose.ts"
+        },
+        {
+          "path": "lib/utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/utils.ts"
+        }
+      ],
+      "docs": "Installs the complete shadcn/ui component set. Components whose public API exposes a `xxxVariants` helper keep `class-variance-authority`; the rest use tailwind-compose internally with identical class output. Consumers that already run `npx shadcn@latest add --all` can skip this item."
+    },
+    {
       "name": "ai-stack",
       "type": "registry:lib",
       "title": "AI stack",
       "description": "Optional AI SDK 7 integration through the Vercel AI Gateway, with a shared provider and a streaming completion helper.",
       "author": "Aesirlvu <https://github.com/Aesirlvu>",
-      "dependencies": ["ai@^7.0.165", "zod@^4.6.7"],
-      "devDependencies": ["@types/node@^20"],
+      "dependencies": [
+        "ai@^7.0.165",
+        "zod@^4.6.7"
+      ],
+      "devDependencies": [
+        "@types/node@^20"
+      ],
       "envVars": {
         "AI_GATEWAY_API_KEY": "",
         "AI_DEFAULT_MODEL": "openai/gpt-5-mini"
@@ -149,7 +529,9 @@
       "title": "App shell",
       "description": "Desktop application shell with sidebar navigation, topbar, and reusable nav primitives.",
       "author": "Aesirlvu <https://github.com/Aesirlvu>",
-      "registryDependencies": ["Aesirlvu/project-template/base-setup"],
+      "registryDependencies": [
+        "Aesirlvu/project-template/base-setup"
+      ],
       "files": [
         {
           "path": "components/shell/types.ts",
@@ -190,7 +572,9 @@
       "title": "Mobile shell",
       "description": "Mobile-first application shell with a drawer menu and bottom tab bar, including safe-area handling.",
       "author": "Aesirlvu <https://github.com/Aesirlvu>",
-      "registryDependencies": ["Aesirlvu/project-template/base-setup"],
+      "registryDependencies": [
+        "Aesirlvu/project-template/base-setup"
+      ],
       "files": [
         {
           "path": "components/shell/types.ts",
