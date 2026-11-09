@@ -82,11 +82,10 @@ function Field({
   ...props
 }: React.ComponentProps<"div"> & { orientation?: FieldOrientation }) {
   return (
-    <FieldBase
+    <div
       role="group"
       data-slot="field"
       data-orientation={orientation}
-      $orientation={orientation}
       className={composeClasses(
         FieldBase.toClass({ $orientation: orientation }),
         className
