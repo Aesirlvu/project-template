@@ -56,6 +56,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 import { ShowcaseDemo, ShowcaseSection } from "../_components/showcase-section"
+import { ShowcaseSidebar } from "../_components/showcase-sidebar"
 
 export default function ShowcaseNavigationPage() {
   return (
@@ -256,6 +257,16 @@ export default function ShowcaseNavigationPage() {
               <DropdownMenuItem>Rename</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
+        </ShowcaseDemo>
+      </ShowcaseSection>
+
+      <ShowcaseSection
+        id="sidebar"
+        title="Sidebar"
+        description="The application navigation rail with collapsible groups."
+      >
+        <ShowcaseDemo label="sidebar" className="block w-full p-0">
+          <ShowcaseSidebar />
         </ShowcaseDemo>
       </ShowcaseSection>
 
