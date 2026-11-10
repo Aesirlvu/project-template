@@ -1,6 +1,7 @@
 "use client"
 
-import { IconBold, IconItalic } from "@tabler/icons-react"
+import { IconArrowRight, IconBold, IconItalic } from "@tabler/icons-react"
+import Link from "next/link"
 
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { DirectionProvider } from "@/components/ui/direction"
@@ -25,18 +26,58 @@ import {
 } from "@/components/ui/message-scroller"
 
 import { ShowcaseDemo, ShowcaseSection } from "../_components/showcase-section"
-import { ShowcaseSidebar } from "../_components/showcase-sidebar"
 
 export default function ShowcaseShellPage() {
   return (
     <div className="mx-auto flex max-w-3xl flex-col">
       <ShowcaseSection
-        id="sidebar"
-        title="Sidebar"
-        description="The application navigation rail with collapsible groups."
+        id="shells"
+        title="Application shells"
+        description="The shell layouts live on their own routes because each one owns the whole viewport. Rendering them inline would overlap the showcase."
       >
-        <ShowcaseDemo label="sidebar" className="block w-full p-0">
-          <ShowcaseSidebar />
+        <ShowcaseDemo label="shell routes" className="block w-full p-0">
+          <div className="flex flex-col divide-y divide-border">
+            {[
+              {
+                href: "/shells/desktop",
+                label: "Desktop",
+                description:
+                  "Persistent sidebar, top bar and scrollable content.",
+              },
+              {
+                href: "/shells/mobile",
+                label: "Mobile with bottom nav",
+                description:
+                  "Drawer for the full navigation plus a bottom tab bar.",
+              },
+              {
+                href: "/shells/mobile-drawer",
+                label: "Mobile drawer only",
+                description:
+                  "Navigation behind the menu button, no bottom bar.",
+              },
+              {
+                href: "/shells/split",
+                label: "Split",
+                description:
+                  "Sidebar for the wide navigation and a bottom tab bar.",
+              },
+            ].map((variant) => (
+              <Link
+                key={variant.href}
+                href={variant.href}
+                className="flex min-h-11 items-center justify-between gap-4 px-4 py-3 text-sm transition-colors hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+              >
+                <span className="flex flex-col">
+                  <span className="font-medium">{variant.label}</span>
+                  <span className="text-xs text-muted-foreground">
+                    {variant.description}
+                  </span>
+                </span>
+                <IconArrowRight className="size-4 shrink-0 text-muted-foreground" />
+              </Link>
+            ))}
+          </div>
         </ShowcaseDemo>
       </ShowcaseSection>
 
