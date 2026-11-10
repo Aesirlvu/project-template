@@ -15,6 +15,7 @@ export const showcaseSections = [
   { href: "/showcase/feedback", label: "Feedback" },
   { href: "/showcase/layout", label: "Layout" },
   { href: "/showcase/shell", label: "Shell" },
+  { href: "/shells", label: "Shells" },
 ] as const
 
 export function ShowcaseNav({ className }: { className?: string }) {
