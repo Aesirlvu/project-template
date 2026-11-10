@@ -222,8 +222,8 @@ export default function ShowcaseNavigationPage() {
               render={<Button variant="outline">Open menu</Button>}
             />
             <DropdownMenuContent align="start">
-              <DropdownMenuLabel>My account</DropdownMenuLabel>
               <DropdownMenuGroup>
+                <DropdownMenuLabel>My account</DropdownMenuLabel>
                 <DropdownMenuItem>Profile</DropdownMenuItem>
                 <DropdownMenuItem>
                   Settings
