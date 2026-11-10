@@ -205,7 +205,7 @@ export default function ShowcaseFeedbackPage() {
             ]}
           >
             <QuestionnaireProgress />
-            <QuestionnaireItem name="stack">
+            <QuestionnaireItem name="stack" required>
               <QuestionnaireTitle>
                 Which stack do you want to start with?
               </QuestionnaireTitle>
@@ -232,7 +232,15 @@ export default function ShowcaseFeedbackPage() {
                   </QuestionnaireChoiceDescription>
                 </QuestionnaireChoice>
               </QuestionnaireChoices>
-              <QuestionnaireInput placeholder="Anything else we should know?" />
+            </QuestionnaireItem>
+            <QuestionnaireItem name="notes">
+              <QuestionnaireTitle>
+                Anything else we should know?
+              </QuestionnaireTitle>
+              <QuestionnaireDescription>
+                Optional. Tell us about your project.
+              </QuestionnaireDescription>
+              <QuestionnaireInput placeholder="A short note" />
             </QuestionnaireItem>
             <QuestionnaireActions>
               <QuestionnairePrevious>Back</QuestionnairePrevious>
