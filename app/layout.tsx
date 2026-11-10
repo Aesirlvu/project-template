@@ -23,7 +23,7 @@ const rootClassName = compose
     spaceGrotesk.variable,
     geistHeading.variable,
   ])
-  .toString()
+  .toClass()
 
 export default function RootLayout({
   children,
