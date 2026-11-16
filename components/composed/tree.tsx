@@ -51,8 +51,9 @@ export function ComposedTreeItem({
   icon,
   text,
   children,
+  groupClassName,
   ...props
-}: ComposedTreeItemProps) {
+}: ComposedTreeItemProps & { groupClassName?: string }) {
   return (
     <TreeItemPrimitive data-slot="tree-item" {...props}>
       <TreeItemLabelPrimitive
@@ -76,7 +77,14 @@ export function ComposedTreeItem({
         {icon}
         {text ? <span className="truncate">{text}</span> : null}
       </TreeItemLabelPrimitive>
-      {children}
+      {children ? (
+        <TreeGroupPrimitive
+          data-slot="tree-group"
+          className={cn("ml-4 flex flex-col gap-0.5", groupClassName)}
+        >
+          {children}
+        </TreeGroupPrimitive>
+      ) : null}
     </TreeItemPrimitive>
   )
 }

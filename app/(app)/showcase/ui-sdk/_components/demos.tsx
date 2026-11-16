@@ -6,11 +6,7 @@ import { IconFolder, IconFolderOpen, IconFile } from "@tabler/icons-react"
 
 import { ComposedSegmentedControl } from "@/components/composed/segmented-control"
 import { ComposedRating } from "@/components/composed/rating"
-import {
-  ComposedTree,
-  ComposedTreeGroup,
-  ComposedTreeItem,
-} from "@/components/composed/tree"
+import { ComposedTree, ComposedTreeItem } from "@/components/composed/tree"
 import {
   DataGridCell,
   DataGridColumnHeader,
@@ -129,11 +125,7 @@ function FileNodes({ items }: { items: FileNode[] }) {
             )
           }
         >
-          {item.children ? (
-            <ComposedTreeGroup>
-              <FileNodes items={item.children} />
-            </ComposedTreeGroup>
-          ) : null}
+          {item.children ? <FileNodes items={item.children} /> : null}
         </ComposedTreeItem>
       ))}
     </>
@@ -142,7 +134,7 @@ function FileNodes({ items }: { items: FileNode[] }) {
 
 export function TreeDemo() {
   return (
-    <ComposedTree label="Project files" defaultExpanded={["app"]}>
+    <ComposedTree label="Project files" items={FILES} defaultExpanded={["app"]}>
       <FileNodes items={FILES} />
     </ComposedTree>
   )
