@@ -154,9 +154,9 @@ export function DataGridDemo() {
       rows={GRID_ROWS.length}
       columns={GRID_COLUMNS.length}
       aria-label="Services"
-      className="w-full border-collapse text-sm"
+      className="grid w-full grid-cols-[repeat(3,minmax(0,1fr))] text-sm"
     >
-      <DataGridRow className="border-b">
+      <DataGridRow className="col-span-3 grid grid-cols-[repeat(3,minmax(0,1fr))] border-b">
         {GRID_COLUMNS.map((column) => (
           <DataGridColumnHeader
             key={column}
@@ -167,14 +167,17 @@ export function DataGridDemo() {
         ))}
       </DataGridRow>
       {GRID_ROWS.map((row, rowIndex) => (
-        <DataGridRow key={row[0]} className="border-b last:border-0">
+        <DataGridRow
+          key={row[0]}
+          className="col-span-3 grid grid-cols-[repeat(3,minmax(0,1fr))] border-b last:border-0"
+        >
           {row.map((value, colIndex) => (
             <DataGridCell
               key={value}
               id={`${rowIndex + 1}:${colIndex + 1}`}
               row={rowIndex}
               col={colIndex}
-              className="px-3 py-2 data-selected:bg-muted"
+              className="border-r px-3 py-2 last:border-r-0 data-selected:bg-muted"
             >
               {value}
             </DataGridCell>
