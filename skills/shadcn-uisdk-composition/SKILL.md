@@ -95,6 +95,20 @@ every state change and breaks the server render.
 `--rating-fill` (0 to 1) is the exception the package documents: use it for a
 partial fill, and read it in the icon, not in a class attribute.
 
+### 3b. Never size a measured part yourself
+
+Some ui-sdk parts measure themselves and expose the result as CSS variables on
+the part itself: the segmented control writes `--segmented-control-indicator-left`,
+`-width`, `-height` and `-top` on its indicator element. The package's
+stylesheet consumes them.
+
+Do not give that part a width, a height or a position of your own. A single
+`size-[calc(100%-0.25rem)]` overrode the measured width and made the indicator
+cover every tab instead of the active one.
+
+Rule: if the component measures it, let it measure it. Style color, radius,
+shadow and transitions, and leave the geometry to the variables.
+
 ### 4. Never re-declare a role
 
 If ui-sdk ships the component, it ships the role, the keyboard model and the
@@ -232,6 +246,7 @@ contrast in a real browser.
   part.
 - A `role` declared by hand next to an installed ui-sdk component.
 - State read in JS to compute a class, instead of a `data-*` variant.
+- A width, height or position set on a part that measures itself.
 - A primitive with classes in it (belongs in `composed/`).
 - A `attrs` function reading live state.
 - An uncontrolled widget whose value can be `null` and is used without a
