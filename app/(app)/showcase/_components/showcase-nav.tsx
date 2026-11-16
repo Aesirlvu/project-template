@@ -14,6 +14,7 @@ export const showcaseSections = [
   { href: "/showcase/data-display", label: "Data display" },
   { href: "/showcase/feedback", label: "Feedback" },
   { href: "/showcase/layout", label: "Layout" },
+  { href: "/showcase/ai-elements", label: "AI Elements" },
   { href: "/showcase/shell", label: "Shell" },
   { href: "/shells", label: "Shells" },
 ] as const

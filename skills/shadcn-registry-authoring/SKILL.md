@@ -74,3 +74,35 @@ The validator checks the schema and that every referenced source file exists.
 - The consumer needs a `tsconfig.json`; `components.json` alone is not enough.
 - Existing files in the consumer are skipped, not overwritten. Use `--overwrite` to replace them.
 - If the install fails, the dependency install runs first: a missing package aborts the whole operation before files are written.
+
+## Distributing a pattern collection
+
+Some upstream component sets are documentation-only. The AI Elements patterns
+at `ui.shadcn.com/docs/ai-elements` are the reference case: they are not
+published registry items, so `https://ui.shadcn.com/r/styles/base-sera/<name>.json`
+returns 404 and `shadcn view` finds nothing.
+
+To ship them yourself:
+
+1. Read the upstream page and treat its **"Migrating from AI SDK Elements"**
+   section as the API specification. It names every export to keep, with the
+   same name and props. The first code block on the page is a usage demo, not
+   the implementation.
+2. Implement one file per pattern, composed over primitives the consumer
+   already has, and declare the missing support modules as files of the same
+   item.
+3. Declare the dependency on the primitive set with
+   `registryDependencies: ["owner/repo/ui-kit"]` using the full address.
+4. Keep the icon library consistent with the project. This template uses
+   `@tabler/icons-react`, so upstream Lucide imports must be mapped — the
+   fixed mapping is in `docs/ai-elements-icons.md`.
+
+Checklist for a new pattern file:
+
+- No import of the upstream icon library.
+- `"use client"` when it holds state, or when it receives an icon component or
+  a function as a prop.
+- Base UI primitives take `render={<Button />}`, never `asChild`.
+- Menu parts keep their group ancestor, or they throw
+  `MenuGroupContext is missing` at runtime.
+- Every prop type is exported.

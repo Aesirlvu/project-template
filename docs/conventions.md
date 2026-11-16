@@ -112,6 +112,26 @@ derives the scroll state from the Embla API during render and uses a
 `requestAnimationFrame` for the initial state, because Embla only emits
 `select` when the active index changes.
 
+## AI Elements
+
+- The 21 patterns live one per file under `components/ai-elements/`.
+- Use `@tabler/icons-react`, never `lucide-react`. The fixed mapping lives in
+  `docs/ai-elements-icons.md`.
+- Do not use `cva` or `tailwind-compose` in these files. They compose over the
+  primitives in `components/ui/` with plain class strings.
+- A component that holds state, or that receives an icon component or a
+  function as a prop, must be a client component. React cannot pass functions
+  across the server/client boundary.
+- Base UI primitives take `render={<Button />}`, not `asChild`. Menu parts
+  require their group ancestor — a `DropdownMenuLabel` outside a
+  `DropdownMenuGroup` throws `MenuGroupContext is missing` at runtime.
+- Upstream keeps three modules private to its own app, so this project ships
+  them locally: `lib/ai.ts` (`getMessageText`), `lib/message-animations.ts`
+  (`ANIMATIONS`, `MESSAGE_ANIMATIONS`), and `components/markdown.tsx`
+  (`Markdown`).
+- `components/markdown.tsx` wraps `react-markdown` in a `<div>`: the
+  `react-markdown` root accepts no `className` or `data-slot`.
+
 ## Interaction
 
 - Interactive targets are at least 44px tall (`min-h-11`).

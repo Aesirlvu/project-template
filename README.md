@@ -22,6 +22,7 @@ Registry](https://ui.shadcn.com/docs/registry). It serves two purposes:
 | --- | --- | --- |
 | `base-setup` | `registry:base` | Design system base: CSS variables, theme provider, Button component, utilities, and the base dependencies |
 | `ui-kit` | `registry:block` | The full shadcn/ui component set (63 components) plus its hooks and utilities, with internal variants migrated to `tailwind-compose` (requires `base-setup`) |
+| `ai-elements` | `registry:block` | The 21 AI Elements patterns from shadcn/ui (chat, reasoning, tool, task, sources, prompt input and more) rebuilt on this project's UI kit, with Tabler icons (requires `ui-kit`) |
 | `ai-stack` | `registry:lib` | Optional AI SDK 7 integration through the Vercel AI Gateway: shared provider, streaming helper, and environment variables |
 | `add-deps` | `registry:file` | `scripts/add-deps.mjs`, a script to add your own dependencies on top of the base setup |
 | `docs-pack` | `registry:file` | `docs/architecture.md`, `docs/conventions.md`, `docs/ARCHITECTURE.md`, and `AGENTS.md` |
@@ -43,6 +44,9 @@ npx shadcn@latest add Aesirlvu/project-template/base-setup
 
 # the full component set (63 components)
 npx shadcn@latest add Aesirlvu/project-template/ui-kit
+
+# the AI Elements patterns (chat, reasoning, tool, task, ...)
+npx shadcn@latest add Aesirlvu/project-template/ai-elements
 
 # desktop and/or mobile application chrome
 npx shadcn@latest add Aesirlvu/project-template/app-shell
@@ -70,6 +74,33 @@ rather than overwritten; add `--overwrite` to replace them.
 Set `AI_GATEWAY_API_KEY` in your environment to call hosted models. See the
 [AI Gateway documentation](https://vercel.com/docs/ai-gateway) for keys and
 model IDs.
+
+### AI Elements
+
+The `ai-elements` item installs the 21 AI Elements patterns documented at
+[ui.shadcn.com/docs/ai-elements](https://ui.shadcn.com/docs/ai-elements),
+rebuilt on top of this project's UI kit.
+
+```bash
+npx shadcn@latest add Aesirlvu/project-template/ai-elements
+```
+
+It installs the patterns under `components/ai-elements/` plus three shared
+modules that upstream keeps private to its own app:
+
+| Module | Exports |
+| --- | --- |
+| `@/lib/ai` | `getMessageText`, plus a re-export of `@shadcn/helpers/ai-sdk` |
+| `@/lib/message-animations` | `ANIMATIONS`, `MESSAGE_ANIMATIONS` |
+| `@/components/markdown` | `Markdown`, a `react-markdown` renderer wired to this project's `CodeBlock` |
+
+Two deliberate differences from the upstream docs:
+
+- **Icons are Tabler, not Lucide.** This project uses `@tabler/icons-react`.
+  The full mapping lives in [`docs/ai-elements-icons.md`](docs/ai-elements-icons.md).
+- **No `streamdown`.** Markdown rendering goes through `react-markdown` and
+  `remark-gfm`, reusing the `CodeBlock` component and the syntax highlighter
+  that ship with the `ui-kit`.
 
 ### Adding your own dependencies
 

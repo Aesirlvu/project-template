@@ -424,6 +424,147 @@
       "docs": "Installs the complete shadcn/ui component set. Components whose public API exposes a `xxxVariants` helper keep `class-variance-authority`; the rest use tailwind-compose internally with identical class output. Consumers that already run `npx shadcn@latest add --all` can skip this item."
     },
     {
+      "name": "ai-elements",
+      "type": "registry:block",
+      "title": "AI Elements",
+      "description": "The 21 AI Elements patterns from shadcn/ui (chat, reasoning, tool, task, sources, prompt input and more) rebuilt on top of this project's UI kit, with Tabler icons instead of Lucide.",
+      "author": "Aesirlvu <https://github.com/Aesirlvu>",
+      "dependencies": [
+        "@ai-sdk/react@^4.0.177",
+        "@shadcn/helpers@^0.3.0",
+        "ai@^7.0.165",
+        "motion@^14.14.0",
+        "react-markdown@^10.1.0",
+        "remark-gfm@^4.0.1"
+      ],
+      "registryDependencies": [
+        "Aesirlvu/project-template/ui-kit"
+      ],
+      "files": [
+        {
+          "path": "components/ai-elements/chain-of-thought.tsx",
+          "type": "registry:component",
+          "target": "@components/ai-elements/chain-of-thought.tsx"
+        },
+        {
+          "path": "components/ai-elements/chat.tsx",
+          "type": "registry:component",
+          "target": "@components/ai-elements/chat.tsx"
+        },
+        {
+          "path": "components/ai-elements/checkpoint.tsx",
+          "type": "registry:component",
+          "target": "@components/ai-elements/checkpoint.tsx"
+        },
+        {
+          "path": "components/ai-elements/confirmation.tsx",
+          "type": "registry:component",
+          "target": "@components/ai-elements/confirmation.tsx"
+        },
+        {
+          "path": "components/ai-elements/context.tsx",
+          "type": "registry:component",
+          "target": "@components/ai-elements/context.tsx"
+        },
+        {
+          "path": "components/ai-elements/file-tree.tsx",
+          "type": "registry:component",
+          "target": "@components/ai-elements/file-tree.tsx"
+        },
+        {
+          "path": "components/ai-elements/inline-citation.tsx",
+          "type": "registry:component",
+          "target": "@components/ai-elements/inline-citation.tsx"
+        },
+        {
+          "path": "components/ai-elements/message.tsx",
+          "type": "registry:component",
+          "target": "@components/ai-elements/message.tsx"
+        },
+        {
+          "path": "components/ai-elements/model-selector.tsx",
+          "type": "registry:component",
+          "target": "@components/ai-elements/model-selector.tsx"
+        },
+        {
+          "path": "components/ai-elements/plan.tsx",
+          "type": "registry:component",
+          "target": "@components/ai-elements/plan.tsx"
+        },
+        {
+          "path": "components/ai-elements/prompt-input.tsx",
+          "type": "registry:component",
+          "target": "@components/ai-elements/prompt-input.tsx"
+        },
+        {
+          "path": "components/ai-elements/queue.tsx",
+          "type": "registry:component",
+          "target": "@components/ai-elements/queue.tsx"
+        },
+        {
+          "path": "components/ai-elements/reasoning.tsx",
+          "type": "registry:component",
+          "target": "@components/ai-elements/reasoning.tsx"
+        },
+        {
+          "path": "components/ai-elements/sources.tsx",
+          "type": "registry:component",
+          "target": "@components/ai-elements/sources.tsx"
+        },
+        {
+          "path": "components/ai-elements/stack-trace.tsx",
+          "type": "registry:component",
+          "target": "@components/ai-elements/stack-trace.tsx"
+        },
+        {
+          "path": "components/ai-elements/subagent.tsx",
+          "type": "registry:component",
+          "target": "@components/ai-elements/subagent.tsx"
+        },
+        {
+          "path": "components/ai-elements/suggestion.tsx",
+          "type": "registry:component",
+          "target": "@components/ai-elements/suggestion.tsx"
+        },
+        {
+          "path": "components/ai-elements/task.tsx",
+          "type": "registry:component",
+          "target": "@components/ai-elements/task.tsx"
+        },
+        {
+          "path": "components/ai-elements/terminal.tsx",
+          "type": "registry:component",
+          "target": "@components/ai-elements/terminal.tsx"
+        },
+        {
+          "path": "components/ai-elements/test-results.tsx",
+          "type": "registry:component",
+          "target": "@components/ai-elements/test-results.tsx"
+        },
+        {
+          "path": "components/ai-elements/tool.tsx",
+          "type": "registry:component",
+          "target": "@components/ai-elements/tool.tsx"
+        },
+        {
+          "path": "components/markdown.tsx",
+          "type": "registry:component",
+          "target": "@components/markdown.tsx"
+        },
+        {
+          "path": "lib/ai.ts",
+          "type": "registry:lib",
+          "target": "@lib/ai.ts"
+        },
+        {
+          "path": "lib/message-animations.ts",
+          "type": "registry:lib",
+          "target": "@lib/message-animations.ts"
+        }
+      ],
+      "docs": "Requires `ui-kit`. Install with `npx shadcn@latest add Aesirlvu/project-template/ai-elements`. Patterns live under `components/ai-elements/`; the shared helpers `getMessageText`, `MESSAGE_ANIMATIONS` and `Markdown` are installed alongside them. Icons use `@tabler/icons-react`."
+    },
+    {
       "name": "ai-stack",
       "type": "registry:lib",
       "title": "AI stack",
@@ -499,9 +640,14 @@
           "path": "agent/ARCHITECTURE.md",
           "type": "registry:file",
           "target": "~/docs/ARCHITECTURE.md"
+        },
+        {
+          "path": "docs/ai-elements-icons.md",
+          "type": "registry:file",
+          "target": "~/docs/ai-elements-icons.md"
         }
       ],
-      "docs": "Installs `docs/architecture.md`, `docs/conventions.md`, `docs/ARCHITECTURE.md` and `AGENTS.md` in the consumer project."
+      "docs": "Installs `docs/architecture.md`, `docs/conventions.md`, `docs/ARCHITECTURE.md`, `docs/ai-elements-icons.md` and `AGENTS.md` in the consumer project."
     },
     {
       "name": "app-shell",

@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Cached upstream registry sources used by the parity tests.
+    ".registry-cache/**",
   ]),
 ]);
 

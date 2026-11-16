@@ -33,3 +33,7 @@ Run `npm run lint`, `npm run typecheck`, `npm run build` and `npm test` before d
 ## Layout
 
 The app shell primitives live in `components/shell/`. Desktop chrome is `AppShell`; mobile chrome is `MobileShell` with `MobileNav` and `MobileTabBar`.
+
+## AI Elements
+
+The patterns in `components/ai-elements/` use Tabler icons, never Lucide. The mapping is in `docs/ai-elements-icons.md`. They hold no `cva` and no `tailwind-compose` — they compose over `components/ui/` with plain class strings. A pattern that keeps state, or that receives an icon component or a function as a prop, must be a client component.
