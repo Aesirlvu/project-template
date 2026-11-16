@@ -42,7 +42,7 @@ export function ComposedSegmentedControl({
       <SegmentedControlIndicatorPrimitive
         data-slot="segmented-control-indicator"
         className={cn(
-          "pointer-events-none absolute z-0 size-[calc(100%-0.25rem)] rounded-sm bg-background shadow-sm",
+          "pointer-events-none absolute z-0 rounded-sm bg-background shadow-sm",
           "transition-[left,top,width,height] duration-200 ease-out"
         )}
       />
