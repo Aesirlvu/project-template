@@ -10,7 +10,7 @@
     "lint": "eslint",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit",
-    "test": "node scripts/carousel-state.test.mjs && node scripts/class-parity.mjs && node scripts/ai-elements-api.test.mjs"
+    "test": "node scripts/carousel-state.test.mjs && node scripts/class-parity.mjs && node scripts/ai-elements-api.test.mjs && node scripts/data-grid-contract.test.mjs"
   },
   "dependencies": {
     "@ai-sdk/react": "^4.0.177",

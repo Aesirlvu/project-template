@@ -754,7 +754,7 @@
       "name": "agent-skills",
       "type": "registry:item",
       "title": "Agent skills",
-      "description": "Agent-facing skill packs covering shadcn registry authoring, Next.js application shell construction, tailwind-compose patterns and the ui-sdk primitive API.",
+      "description": "Agent-facing skill packs covering shadcn registry authoring, Next.js application shell construction, tailwind-compose patterns, the ui-sdk primitive API and how to compose shadcn/ui presentation with ui-sdk behavior.",
       "author": "Aesirlvu <https://github.com/Aesirlvu>",
       "files": [
         {
@@ -811,9 +811,61 @@
           "path": "skills/ui-sdk/references/web-components.md",
           "type": "registry:file",
           "target": "~/skills/ui-sdk/references/web-components.md"
+        },
+        {
+          "path": "skills/shadcn-uisdk-composition/SKILL.md",
+          "type": "registry:file",
+          "target": "~/skills/shadcn-uisdk-composition/SKILL.md"
         }
       ],
       "docs": "Installs skill packs under `skills/`. Point your agent at the installed `SKILL.md` files to pick up the conventions used by this template. The ui-sdk pack also ships its reference pages under `skills/ui-sdk/references/`."
+    },
+    {
+      "name": "ui-primitives",
+      "type": "registry:block",
+      "title": "UI primitives and compositions",
+      "description": "Own behavior primitives written with the ui-sdk primitive API plus the compositions that pair ui-sdk behavior with shadcn/ui presentation.",
+      "author": "Aesirlvu <https://github.com/Aesirlvu>",
+      "dependencies": [
+        "@ui-sdk/core@^0.1.0-beta.6",
+        "@ui-sdk/react@^0.1.0-beta.6"
+      ],
+      "registryDependencies": [
+        "Aesirlvu/project-template/ui-kit"
+      ],
+      "files": [
+        {
+          "path": "components/composed/rating.tsx",
+          "type": "registry:component",
+          "target": "@components/composed/rating.tsx"
+        },
+        {
+          "path": "components/composed/segmented-control.tsx",
+          "type": "registry:component",
+          "target": "@components/composed/segmented-control.tsx"
+        },
+        {
+          "path": "components/composed/tree.tsx",
+          "type": "registry:component",
+          "target": "@components/composed/tree.tsx"
+        },
+        {
+          "path": "components/primitives/data-grid.primitive.ts",
+          "type": "registry:component",
+          "target": "@components/primitives/data-grid.primitive.ts"
+        },
+        {
+          "path": "components/primitives/data-grid.spec.md",
+          "type": "registry:component",
+          "target": "@components/primitives/data-grid.spec.md"
+        },
+        {
+          "path": "components/primitives/data-grid.tsx",
+          "type": "registry:component",
+          "target": "@components/primitives/data-grid.tsx"
+        }
+      ],
+      "docs": "Installs the primitives and the shadcn + ui-sdk compositions. Requires the ui-sdk layer in the global stylesheet: put `@layer ui-sdk;` above `@import \"tailwindcss\"` and import `@ui-sdk/core/web.css` in the components layer. Read the shadcn-uisdk-composition skill before extending these components."
     }
   ]
 }
