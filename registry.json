@@ -754,7 +754,7 @@
       "name": "agent-skills",
       "type": "registry:item",
       "title": "Agent skills",
-      "description": "Agent-facing skill packs covering shadcn registry authoring and Next.js application shell construction.",
+      "description": "Agent-facing skill packs covering shadcn registry authoring, Next.js application shell construction, tailwind-compose patterns and the ui-sdk primitive API.",
       "author": "Aesirlvu <https://github.com/Aesirlvu>",
       "files": [
         {
@@ -771,9 +771,49 @@
           "path": "skills/tailwind-compose-patterns/SKILL.md",
           "type": "registry:file",
           "target": "~/skills/tailwind-compose-patterns/SKILL.md"
+        },
+        {
+          "path": "skills/ui-sdk/SKILL.md",
+          "type": "registry:file",
+          "target": "~/skills/ui-sdk/SKILL.md"
+        },
+        {
+          "path": "skills/ui-sdk/references/agent-ready.md",
+          "type": "registry:file",
+          "target": "~/skills/ui-sdk/references/agent-ready.md"
+        },
+        {
+          "path": "skills/ui-sdk/references/build-interface.md",
+          "type": "registry:file",
+          "target": "~/skills/ui-sdk/references/build-interface.md"
+        },
+        {
+          "path": "skills/ui-sdk/references/create-component.md",
+          "type": "registry:file",
+          "target": "~/skills/ui-sdk/references/create-component.md"
+        },
+        {
+          "path": "skills/ui-sdk/references/patterns.md",
+          "type": "registry:file",
+          "target": "~/skills/ui-sdk/references/patterns.md"
+        },
+        {
+          "path": "skills/ui-sdk/references/styles.md",
+          "type": "registry:file",
+          "target": "~/skills/ui-sdk/references/styles.md"
+        },
+        {
+          "path": "skills/ui-sdk/references/testing.md",
+          "type": "registry:file",
+          "target": "~/skills/ui-sdk/references/testing.md"
+        },
+        {
+          "path": "skills/ui-sdk/references/web-components.md",
+          "type": "registry:file",
+          "target": "~/skills/ui-sdk/references/web-components.md"
         }
       ],
-      "docs": "Installs skill packs under `skills/`. Point your agent at the installed `SKILL.md` files to pick up the conventions used by this template."
+      "docs": "Installs skill packs under `skills/`. Point your agent at the installed `SKILL.md` files to pick up the conventions used by this template. The ui-sdk pack also ships its reference pages under `skills/ui-sdk/references/`."
     }
   ]
 }

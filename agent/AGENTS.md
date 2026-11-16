@@ -37,3 +37,15 @@ The app shell primitives live in `components/shell/`. Desktop chrome is `AppShel
 ## AI Elements
 
 The patterns in `components/ai-elements/` use Tabler icons, never Lucide. The mapping is in `docs/ai-elements-icons.md`. They hold no `cva` and no `tailwind-compose` — they compose over `components/ui/` with plain class strings. A pattern that keeps state, or that receives an icon component or a function as a prop, must be a client component.
+
+## ui-sdk
+
+Before using ui-sdk, follow the ui-sdk skill if it is installed and read `node_modules/@ui-sdk/react/docs/llms.txt`.
+
+To build a new component, search `node_modules/@ui-sdk/react/docs/core.md` by heading and read `rendering.md` alongside it.
+
+The packages are `@ui-sdk/react` and `@ui-sdk/core` (both beta). There is no root import: every component has its own entry point, for example `import { Button } from "@ui-sdk/react/button"`.
+
+ui-sdk components are unstyled. They expose their state as data attributes (`data-pressed`, `data-open`, `data-selected`, `data-disabled`, `data-slot`), so style them with Tailwind variants on those attributes.
+
+Its default stylesheet is imported once in `app/globals.css`, in the `components` layer, so Tailwind's base reset does not override it. Its tokens are namespaced with `--ui-*` and do not collide with this project's semantic tokens.
